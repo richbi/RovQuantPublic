@@ -1,6 +1,6 @@
 library(nimble)
 library(nimbleSCR)
-# 1. SCR models 
+##---- 1. SCR models ----
 # input file to run the single season SCR models are located here:
 # fagrapport74_Wolverine2013-2021/input/singleSeasonSCR
 # "Fa" stands for females, and "Ma" for males. One input file is given for each monitoring seasons (9 in total)
@@ -33,10 +33,9 @@ MCMCRuntime <- system.time(myNimbleOutput <- runMCMC( mcmc = cMCMC,
                                                       niter = 10,
                                                       nchains = 1,
                                                       samplesAsCodaMCMC = TRUE))
-#plot check 
 overallRuntimeEnd <- proc.time()
 
-# 2. OPSCR models 
+##----  2. OPSCR models ----
 rm(list=ls())
 setwd("C:/My_documents/rovquant/analyses/Rgit/RovQuantPublic/technicalReports/fagrapport74_Wolverine2013-2021/input/OPSCR")
 load("25.J_Fa1.RData")
@@ -67,6 +66,5 @@ MCMCRuntime <- system.time(myNimbleOutput <- runMCMC( mcmc = cMCMC,
                                                       niter = 10,
                                                       nchains = 1,
                                                       samplesAsCodaMCMC = TRUE))
-#plot check 
 overallRuntimeEnd <- proc.time()
 
