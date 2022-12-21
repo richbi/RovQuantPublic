@@ -8,7 +8,7 @@ setwd("C:/My_documents/rovquant/analyses/Rgit/RovQuantPublic/technicalReports/fa
 # Females
 load("47.aJ_FaCleaned1.RData")
 # Males
-#load("28.M_2021_INPUTChain1.RData")
+#load("47.aM_FaCleaned1.RData")
 
 
 ## load a custom nimble function located in fagrapport74_Wolverine2013-2021/RScripts
