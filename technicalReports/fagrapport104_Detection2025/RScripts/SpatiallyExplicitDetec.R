@@ -28,22 +28,8 @@ rm(list = ls())
 gc()
 
 
-##-- Identify user and set corresponding DropBox and Git/Rovquant directory
-# if(Sys.info()['user'] == 'pidu') {
-#   dir.git <- "C:/My_documents/RovQuantPublic"
-# }
-# if(Sys.info()['user'] == 'pierredupont') {
-#   dir.git <- "/Users/pierredupont/Documents/RovQuantPublic"
-# }
-# if(Sys.info()['user'] == 'cymi') {
-#   dir.git <- "C:/My_documents/RovQuantPublic/"
-# }
-# if(Sys.info()['user'] == 'richbi') {
-#   dir.git <- "C:/Users/richbi/OneDrive - Norwegian University of Life Sciences/PROJECTS/RovQuantPublic"
-# }
-if(Sys.info()['user'] == 'seasunci') {
-  dir.git <- "C:/Users/seasunci/03_RovQuant_Public/RovQuantPublic"
-}
+##-- Set GitHub directory
+dir.git <- "C:/Users/seasunci/03_RovQuant_Public/RovQuantPublic"
 
 
 ##-- Libraries
