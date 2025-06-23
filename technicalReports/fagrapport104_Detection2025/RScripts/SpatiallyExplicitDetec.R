@@ -136,60 +136,60 @@ for(t in 1:n.years){
 
 
 ## ------   3.3. SAVE DETECTABILITY OBJECTS ------
-
-save( DetectabilityRegionsM, file = file.path(dir.out, "Detectability_5km_Males.RData"))
-
-# load(file.path(dir.out, "Detectability_5km_Males.RData"))
-
-
-
-## ------   3.4. PLOT DETECTABILITY MAPS -----
-
-##-- MALES
-pdf(file = file.path(dir.out, "DetectabilityMaps_5km_Males.pdf"),
-    width = 20, height = 12)
-
-##-- Set color scale
-max <- max(c(unlist(lapply( DetectabilityRegionsM,
-                            function(x) max(x$MeanCell[], na.rm = T)))))
-cuts <- seq(0, max+0.01*max, length.out = 101) ##-- set breaks
-col <- hcl.colors(length(cuts)-1, "YlOrRd", rev = TRUE)
-
-##-- layout
-mx <- rbind(c(1,rep(1:6, each = 2)),
-            c(rep(1:6, each = 2), 6))
-mx <- rbind(mx, mx + 6)
-nf <- layout(mx,
-             widths = c(rep(1,ncol(mx))),
-             heights = rep(1,2))
-#layout.show(nf)
-par(mar = c(0,0,0,0))
-
-for(t in 1:n.years){
-  plot(st_geometry(COUNTRIES), border = NA, col = "gray80")
-  detectab.r <- regions.r
-  detectab.r[isHabitat] <- DetectabilityRegionsM[[t]]$MeanCell
-  image(detectab.r, add=TRUE, breaks = cuts, col = col, legend=FALSE)
-  plot(st_geometry(COUNTRIES), border = grey(0.4), col = NA, add=TRUE)
-  mtext(text = years[t], side = 1, -8, adj = 0.2, cex = 1.2, font = 2)
-  
-  if(t == n.years){
-    segments(x0 = 900000, x1 = 900000,
-             y0 = 6600000, y1 = 6600000 + 500000,
-             col = grey(0.3), lwd = 4, lend = 2)
-    text(860000, 6600000+500000/2, labels = "500 km", srt = 90, cex = 1.4)
-    plot( detectab.r,
-          legend.only = T,
-          breaks = cuts,
-          col = col,
-          legend.width = 2,
-          axis.args = list( at = round(seq(0,max,length.out = 6),2),
-                            labels = round(seq(0,max,length.out = 6),2),
-                            cex.axis = 1.2),
-          smallplot = c(0.85, 0.9, 0.2, 0.6),
-          legend.args = list(text = "Detection prob.",
-                             side = 2, font = 1, line = 0.5, cex = 1))
-  }#if
-}#t
-dev.off()
+# 
+# save( DetectabilityRegionsM, file = file.path(dir.out, "Detectability_5km_Males.RData"))
+# 
+# # load(file.path(dir.out, "Detectability_5km_Males.RData"))
+# 
+# 
+# 
+# ## ------   3.4. PLOT DETECTABILITY MAPS -----
+# 
+# ##-- MALES
+# pdf(file = file.path(dir.out, "DetectabilityMaps_5km_Males.pdf"),
+#     width = 20, height = 12)
+# 
+# ##-- Set color scale
+# max <- max(c(unlist(lapply( DetectabilityRegionsM,
+#                             function(x) max(x$MeanCell[], na.rm = T)))))
+# cuts <- seq(0, max+0.01*max, length.out = 101) ##-- set breaks
+# col <- hcl.colors(length(cuts)-1, "YlOrRd", rev = TRUE)
+# 
+# ##-- layout
+# mx <- rbind(c(1,rep(1:6, each = 2)),
+#             c(rep(1:6, each = 2), 6))
+# mx <- rbind(mx, mx + 6)
+# nf <- layout(mx,
+#              widths = c(rep(1,ncol(mx))),
+#              heights = rep(1,2))
+# #layout.show(nf)
+# par(mar = c(0,0,0,0))
+# 
+# for(t in 1:n.years){
+#   plot(st_geometry(COUNTRIES), border = NA, col = "gray80")
+#   detectab.r <- regions.r
+#   detectab.r[isHabitat] <- DetectabilityRegionsM[[t]]$MeanCell
+#   image(detectab.r, add=TRUE, breaks = cuts, col = col, legend=FALSE)
+#   plot(st_geometry(COUNTRIES), border = grey(0.4), col = NA, add=TRUE)
+#   mtext(text = years[t], side = 1, -8, adj = 0.2, cex = 1.2, font = 2)
+#   
+#   if(t == n.years){
+#     segments(x0 = 900000, x1 = 900000,
+#              y0 = 6600000, y1 = 6600000 + 500000,
+#              col = grey(0.3), lwd = 4, lend = 2)
+#     text(860000, 6600000+500000/2, labels = "500 km", srt = 90, cex = 1.4)
+#     plot( detectab.r,
+#           legend.only = T,
+#           breaks = cuts,
+#           col = col,
+#           legend.width = 2,
+#           axis.args = list( at = round(seq(0,max,length.out = 6),2),
+#                             labels = round(seq(0,max,length.out = 6),2),
+#                             cex.axis = 1.2),
+#           smallplot = c(0.85, 0.9, 0.2, 0.6),
+#           legend.args = list(text = "Detection prob.",
+#                              side = 2, font = 1, line = 0.5, cex = 1))
+#   }#if
+# }#t
+# dev.off()
 
