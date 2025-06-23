@@ -29,25 +29,20 @@ gc()
 
 
 ##-- Identify user and set corresponding DropBox and Git/Rovquant directory
-if(Sys.info()['user'] == 'pidu') {
-  dir.git <- "C:/My_documents/RovQuant"
-  dir.dropbox <- "C:/Users/pidu/AQEG Dropbox/AQEG Team Folder/RovQuant"
-}
-if(Sys.info()['user'] == 'pierredupont') {
-  dir.git <- "/Users/pierredupont/Documents/RovQuant"
-  dir.dropbox <- "/Users/pierredupont/Dropbox (AQEG)/AQEG Team Folder/RovQuant/"
-}
-if(Sys.info()['user'] == 'cymi') {
-  dir.git <- "C:/My_documents/rovquant/"
-  dir.dropbox <- "C:/Users/cymi/Dropbox (Old)/AQEG Dropbox/AQEG Team Folder/RovQuant" 
-}
-if(Sys.info()['user'] == 'richbi') {
-  dir.git <- "C:/Users/richbi/OneDrive - Norwegian University of Life Sciences/PROJECTS/RovQuant"
-  dir.dropbox <- "C:/Users/richbi/AQEG Dropbox/AQEG Team Folder/RovQuant"
-}
+# if(Sys.info()['user'] == 'pidu') {
+#   dir.git <- "C:/My_documents/RovQuantPublic"
+# }
+# if(Sys.info()['user'] == 'pierredupont') {
+#   dir.git <- "/Users/pierredupont/Documents/RovQuantPublic"
+# }
+# if(Sys.info()['user'] == 'cymi') {
+#   dir.git <- "C:/My_documents/RovQuantPublic/"
+# }
+# if(Sys.info()['user'] == 'richbi') {
+#   dir.git <- "C:/Users/richbi/OneDrive - Norwegian University of Life Sciences/PROJECTS/RovQuantPublic"
+# }
 if(Sys.info()['user'] == 'seasunci') {
-  dir.git <- "C:/Users/seasunci/02_RovQuant/RovQuant"
-  dir.dropbox <- "C:/Users/seasunci/AQEG Dropbox/AQEG Team Folder/RovQuant"
+  dir.git <- "C:/Users/seasunci/03_RovQuant_Public/RovQuantPublic"
 }
 
 
@@ -60,10 +55,10 @@ library(dplyr)
 
 
 ##-- Source C++ function
-sourceCpp(file.path(dir.dropbox,"detection_prob/Individual_detec/FINAL_data_GitHub/cppFunction/GetDetectability.cpp"))
+sourceCpp(file.path(dir.git,"technicalReports/fagrapport104_Detection2025/cppFunction/GetDetectability.cpp"))
 
 ##-- Output directory (to print out results)
-dir.out <- file.path(dir.dropbox, "detection_prob/Individual_detec/FINAL_data_GitHub/output/Bear")
+dir.out <- file.path(dir.git, "technicalReports/fagrapport104_Detection2025/output/Bear")
 
 
 
@@ -74,7 +69,7 @@ dir.out <- file.path(dir.dropbox, "detection_prob/Individual_detec/FINAL_data_Gi
 ## ------ 1. LOAD NECESSARY OBJECTS ------ 
 
 ##-- load necessary input (Habitat, Detectors, habitatRasterResolution, country polygon, output OPSCR model)
-load(file.path(dir.dropbox, "detection_prob/Individual_detec/FINAL_data_GitHub/input/NecessaryInput_BEAR.RData"))
+load(file.path(dir.git, "technicalReports/fagrapport104_Detection2025/input/NecessaryInput_BEAR.RData"))
 
 ## ------ 2. INITIAL SET-UP ------
 
@@ -111,7 +106,7 @@ regions.rgmx <- regions.rgmx[ ,isHabitat]
 ## ------   3.1. MALE -----
 
 ##-- load input data for males
-load(file.path(dir.dropbox, "detection_prob/Individual_detec/FINAL_data_GitHub/input/NOR.2023.7_M_input_1.RData"))
+load(file.path(dir.git, "technicalReports/fagrapport104_Detection2025/input/NOR.2023.7_M_input_1.RData"))
 
 ##-- Get number of years  
 years <- as.numeric(dimnames(nimData$z)[[2]]) 
