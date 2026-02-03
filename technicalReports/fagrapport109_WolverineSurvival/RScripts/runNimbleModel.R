@@ -26,7 +26,7 @@ model$calculate()
 cmodel <- compileNimble(model)
 cmodel$calculate()
 MCMCconf <- configureMCMC(model = model,
-                          monitors = nimParams,
+                          monitors = nimParams,monitors2 = nimParams2,thin2 = 10,
                           control = list(reflective = TRUE),
                           thin = 1)
 
