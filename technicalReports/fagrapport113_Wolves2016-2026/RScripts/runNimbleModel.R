@@ -1,7 +1,6 @@
-##----- Norwegian Bear OPSCR model
-##-- This script loads the data and runs the OPSCR model used in the 
-##-- MINA fagrapport 105 - "Estimates of brown bear density, abundance and
-##-- population dynamics in Norway 2015 - 2024".
+##----- Wolf OPSCR model
+##-- This script loads the data and runs the OPSCR model used in the MINA fagrapport 113 
+##-- "Estimates of wolf density, abundance, and population dynamics in Sweden and Norway, 2016–2026".
 
 ##-- Clear session and load required libraries
 rm(list=ls())
@@ -10,19 +9,18 @@ library(nimbleSCR)
 
 
 ##-- load custom nimble functions and sampler needed to run the model
-##-- (located in fagrapport105_Bear.NOR2015-2024/RScripts)
-source("technicalReports/fagrapport105_Bear_NOR_2015-2024/RScripts/dbinomLocal_normalCovs.R")
+##-- (located in technicalReports/fagrapport113_Wolves2016-2026/RScripts)
+source("RScripts/dbinomLocal_normalWolf.R")
 
 
 ##-- Load Male or Female data input
-##-- (located in fagrapport105_Bear.NOR2015-2024/input)
+##-- (located in technicalReports/fagrapport113_Wolves2016-2026/input)
 
 ##-- Females
-load("input/OPSCR.NOR.F_input.RData")
-
+load("input/40.F_2026.1.3_INPUTChain1.RData")
 
 ##-- Males
-#load("input/OPSCR.NOR.M_input.RData")
+# load("input/40.M_2026.1.3_INPUTChain1.RData")
 
 
 ##-- Fit the OPSCR model with nimbleSCR
@@ -33,7 +31,6 @@ model <- nimbleModel( code = modelCode,
                       inits = nimInits,
                       check = F,
                       calculate = F)
-model$calculate()
 cmodel <- compileNimble(model)
 cmodel$calculate()
 
@@ -53,3 +50,4 @@ MCMCRuntime <- system.time(myNimbleOutput <- runMCMC( mcmc = cMCMC,
                                                       niter = 10,
                                                       nchains = 1,
                                                       samplesAsCodaMCMC = TRUE))
+
